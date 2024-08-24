@@ -1,9 +1,11 @@
-const path = require('path');
-const { getDefaultConfig } = require('@react-native/metro-config');
-const { getConfig } = require('react-native-builder-bob/metro-config');
-const pkg = require('../package.json');
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-const root = path.resolve(__dirname, '..');
+const path = require("path");
+const { getDefaultConfig } = require("@react-native/metro-config");
+const { getConfig } = require("react-native-builder-bob/metro-config");
+const pkg = require("../package.json");
+
+const root = path.resolve(__dirname, "..");
 
 /**
  * Metro configuration
@@ -12,7 +14,7 @@ const root = path.resolve(__dirname, '..');
  * @type {import('metro-config').MetroConfig}
  */
 module.exports = getConfig(getDefaultConfig(__dirname), {
-  root,
-  pkg,
-  project: __dirname,
+    root: root,
+    pkg: pkg,
+    project: __dirname,
 });
