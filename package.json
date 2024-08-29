@@ -25,6 +25,7 @@
     "ios",
     "cpp",
     "*.podspec",
+    "!example/",
     "!ios/build",
     "!android/build",
     "!android/gradle",
