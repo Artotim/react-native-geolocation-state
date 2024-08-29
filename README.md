@@ -1,11 +1,16 @@
 # react-native-geolocation-state
 
-A library for React Native that provides a hook to monitor the geolocation permission and provider status.
-It allows you to check the geolocation permission status and whether GPS and network providers are enabled or not without having to access the user's current location.
+A simple React Native library that helps you keep track of your app’s geolocation permissions and provider status.
+It allows you to check the geolocation permissions and whether GPS and network providers are enabled or not, without having to access the user's current location.
+
 
 ## Output
 ![Output example](output_example.gif)
+
+
 ## Installation
+
+Get started by installing the library with npm or yarn:
 
 ```sh
 npm install react-native-geolocation-state
@@ -16,7 +21,7 @@ yarn add react-native-geolocation-state
 
 ## Geolocation State
 
-The hook returns a `GeolocationState` object that describes the current state of geolocation in the app, featuring:
+The useGeolocationState hook returns a GeolocationState object that describes the current status:
 
 | Key               | Values                                                           | Description                                                                   |
 |-------------------|------------------------------------------------------------------|-------------------------------------------------------------------------------|
@@ -30,7 +35,7 @@ The hook returns a `GeolocationState` object that describes the current state of
 
 ### useGeolocationState
 
-A hook that provides access to the current geolocation state. It automatically updates when the geolocation state changes.
+A hook that provides access to the current geolocation state. It automatically updates and triggers a re-render when state changes.
 
 #### Example
 
@@ -49,7 +54,7 @@ const TestComponent = () => {
 
 ### forceStateRefresh
 
-The `forceStateRefresh` method manually triggers an update of the geolocation state by fetching the latest data from the native module.
+The `forceStateRefresh` method manually triggers an update of the geolocation state by fetching the current status through the native module.
 This method is a fallback and should be used only in cases where the library fails to automatically detect state changes.
 
 
