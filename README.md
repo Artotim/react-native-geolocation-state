@@ -1,6 +1,6 @@
 # react-native-geolocation-state
 
-A library for React Native that provides a hook to monitor the geolocation.
+A library for React Native that provides a hook to monitor the geolocation permission and provider status.
 It allows you to check the geolocation permission status and whether GPS and network providers are enabled or not without having to access the user's current location.
 
 ## Output
