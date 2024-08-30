@@ -138,15 +138,4 @@ class GeolocationStateModule(reactContext: ReactApplicationContext) : ReactConte
     fun getGeolocationState(promise: Promise) {
         promise.resolve(getGeolocationStateParams())
     }
-
-    // // Required RN event methods
-    // @ReactMethod
-    // fun addListener(eventName: String) {
-    //     // Required for RN built-in Event Emitter Calls.
-    // }
-    //
-    // @ReactMethod
-    // fun removeListeners(count: Int) {
-    //     // Required for RN built-in Event Emitter Calls.
-    // }
 }
