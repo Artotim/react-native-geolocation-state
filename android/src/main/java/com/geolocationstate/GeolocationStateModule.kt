@@ -64,7 +64,7 @@ class GeolocationStateModule(reactContext: ReactApplicationContext) : ReactConte
         val permissionType = when {
             hasFineLocationPermission -> "fine"
             hasCoarseLocationPermission -> "coarse"
-            else -> "notAuthorized"
+            else -> "none"
         }
 
         return Pair(permissionState, permissionType)

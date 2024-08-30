@@ -15,9 +15,9 @@ export type GeolocationState = {
      * Indicates the type of location permission granted.
      * - "fine": Fine location permission.
      * - "coarse": Coarse location permission.
-     * - "notAuthorized": No location permission granted.
+     * - "none": No location permission granted.
      */
-    permissionType: "fine" | "coarse" | "notAuthorized";
+    permissionType: "fine" | "coarse" | "none";
 
     /**
      * Represents the state of the GPS provider.

@@ -59,13 +59,13 @@ class GeolocationState: NSObject, CLLocationManagerDelegate {
                 case .reducedAccuracy:
                     permissionType = "coarse"
                 @unknown default:
-                    permissionType = "notAuthorized"
+                    permissionType = "none"
                 }
             } else {
                 permissionType = "fine"
             }
         } else {
-            permissionType = "notAuthorized"
+            permissionType = "none"
         }
 
         return (permissionState, permissionType)

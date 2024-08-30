@@ -39,7 +39,7 @@ class GeolocationStateManager {
     private listeners: Listener[] = [];
     private geolocationState: GeolocationState = {
         permission: "notAuthorized",
-        permissionType: "notAuthorized",
+        permissionType: "none",
         gpsProvider: "disabled",
         networkProvider: null,
     };

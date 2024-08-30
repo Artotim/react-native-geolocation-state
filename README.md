@@ -23,12 +23,12 @@ yarn add react-native-geolocation-state
 
 The useGeolocationState hook returns a GeolocationState object that describes the current status:
 
-| Key               | Values                                                                     | Description                                                                   |
-|-------------------|----------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| Key               | Values                                                                       | Description                                                                   |
+|-------------------|------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | `permission`      | `"authorizedWhenInUse"`, `"authorizedAlways"`, `"notAuthorized"`, `"denied"` | Indicates the location permission status.                                     |
-| `permissionType`  | `"fine"`, `"coarse"`, `"notAuthorized"`                                    | Specifies the type of location permission granted.                            |
-| `gpsProvider`     | `"enabled"`, `"disabled"`                                                  | Shows whether the GPS provider is enabled or disabled.                        |
-| `networkProvider` | `"enabled"`, `"disabled"`, `null`                                          | Shows whether the network provider is enabled or disabled (**Android only**). |
+| `permissionType`  | `"fine"`, `"coarse"`, `"none"`                                               | Specifies the type of location permission granted.                            |
+| `gpsProvider`     | `"enabled"`, `"disabled"`                                                    | Shows whether the GPS provider is enabled or disabled.                        |
+| `networkProvider` | `"enabled"`, `"disabled"`, `null`                                            | Shows whether the network provider is enabled or disabled (**Android only**). |
 
 
 ## Usage
