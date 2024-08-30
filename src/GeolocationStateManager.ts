@@ -1,4 +1,5 @@
 import {AppState, type NativeEventSubscription, Platform} from "react-native";
+import {isEqual} from "lodash";
 
 import {eventEmitter, GeolocationStateModule} from "./nativeManager";
 import {type GeolocationState} from "./index";
@@ -40,7 +41,7 @@ class GeolocationStateManager {
         permission: "notAuthorized",
         permissionType: "notAuthorized",
         gpsProvider: "disabled",
-        networkProvider: undefined,
+        networkProvider: null,
     };
 
     private constructor() {
@@ -64,7 +65,7 @@ class GeolocationStateManager {
      */
     private startListening(): void {
 
-        this.eventSubscription = eventEmitter.addListener("providerStateChanged", this.handleGeolocationStateChange);
+        this.eventSubscription = eventEmitter.addListener("providerStateChanged", this.handleIncomingGeolocationState);
         this.appStateSubscription = AppState.addEventListener("change", this.handleAppStateChange);
 
         if (Platform.OS === "android") {
@@ -87,12 +88,15 @@ class GeolocationStateManager {
     }
 
     /**
-     * Handles geolocation state changes and notifies all listeners.
+     * Handles incoming geolocation state changes and notifies all listeners.
      * @param {GeolocationState} event The new geolocation state.
      */
-    private readonly handleGeolocationStateChange = (event: GeolocationState): void => {
-        this.geolocationState = event;
-        this.listeners.forEach(listener => listener(this.geolocationState));
+    private readonly handleIncomingGeolocationState = (event: GeolocationState): void => {
+
+        if (!isEqual(this.geolocationState, event)) {
+            this.geolocationState = event;
+            this.listeners.forEach(listener => listener(this.geolocationState));
+        }
     };
 
     /**
@@ -109,19 +113,15 @@ class GeolocationStateManager {
      * Updates the geolocation state by fetching the latest data from the native module.
      */
     public updateState = async (): Promise<void> => {
-
         const stateResponse: GeolocationState = await GeolocationStateModule.getGeolocationState();
-
-        if (JSON.stringify(this.geolocationState) !== JSON.stringify(stateResponse)) {
-            this.handleGeolocationStateChange(stateResponse);
-        }
+        this.handleIncomingGeolocationState(stateResponse);
     };
 
     /**
      * Retrieves the current geolocation state.
      * @returns {GeolocationState} The current state.
      */
-    public getState(): GeolocationState {
+    get currentState(): GeolocationState {
         return this.geolocationState;
     }
 

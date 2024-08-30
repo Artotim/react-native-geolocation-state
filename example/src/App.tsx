@@ -23,12 +23,14 @@ export default function App(): ReactElement {
 
         const {permission, permissionType, gpsProvider, networkProvider} = geolocationState;
 
+        const hasPermission = permission === "authorizedWhenInUse" || permission === "authorizedAlways";
+
         return (
             <View style={styles.stateInfoContainer}>
-                <Text style={styles.stateInfo}>Permission state: <Text style={[styles.stateValue, permission === "notAuthorized" ? styles.stateValueRed : styles.stateValueGreen]}>{permission}</Text></Text>
-                <Text style={styles.stateInfo}>Permission type: <Text style={[styles.stateValue, permission === "notAuthorized" ? styles.stateValueRed : styles.stateValueGreen]}>{permissionType}</Text></Text>
+                <Text style={styles.stateInfo}>Permission state: <Text style={[styles.stateValue, hasPermission ? styles.stateValueGreen : styles.stateValueRed]}>{permission}</Text></Text>
+                <Text style={styles.stateInfo}>Permission type: <Text style={[styles.stateValue, permissionType === "notAuthorized" ? styles.stateValueRed : styles.stateValueGreen]}>{permissionType}</Text></Text>
                 <Text style={styles.stateInfo}>GPS provider state: <Text style={[styles.stateValue, gpsProvider === "enabled" ? styles.stateValueGreen : styles.stateValueRed]}>{gpsProvider}</Text></Text>
-                <Text style={styles.stateInfo}>Network provider state: <Text style={[styles.stateValue, networkProvider === "enabled" ? styles.stateValueGreen : styles.stateValueRed]}>{networkProvider ?? "undefined"}</Text></Text>
+                <Text style={styles.stateInfo}>Network provider state: <Text style={[styles.stateValue, networkProvider === "enabled" ? styles.stateValueGreen : styles.stateValueRed]}>{networkProvider ?? "null"}</Text></Text>
             </View>
         );
     };

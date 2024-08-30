@@ -36,8 +36,8 @@ class GeolocationStateModule(reactContext: ReactApplicationContext) : ReactConte
         val params = Arguments.createMap()
 
         val (permission, permissionType) = getPermissionState(reactContext)
-        val gpsEnabled = if (permission != "notAuthorized" && isGpsEnabled()) "enabled" else "disabled"
-        val networkEnabled = if (permission != "notAuthorized" && isNetworkEnabled()) "enabled" else "disabled"
+        val gpsEnabled = if (isGpsEnabled()) "enabled" else "disabled"
+        val networkEnabled = if (isNetworkEnabled()) "enabled" else "disabled"
 
         params.putString("permission", permission)
         params.putString("permissionType", permissionType)
@@ -139,14 +139,14 @@ class GeolocationStateModule(reactContext: ReactApplicationContext) : ReactConte
         promise.resolve(getGeolocationStateParams())
     }
 
-    // Required RN event methods
-    @ReactMethod
-    fun addListener(eventName: String) {
-        // Required for RN built-in Event Emitter Calls.
-    }
-
-    @ReactMethod
-    fun removeListeners(count: Int) {
-        // Required for RN built-in Event Emitter Calls.
-    }
+    // // Required RN event methods
+    // @ReactMethod
+    // fun addListener(eventName: String) {
+    //     // Required for RN built-in Event Emitter Calls.
+    // }
+    //
+    // @ReactMethod
+    // fun removeListeners(count: Int) {
+    //     // Required for RN built-in Event Emitter Calls.
+    // }
 }

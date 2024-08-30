@@ -15,7 +15,7 @@ export default function useGeolocationState(): GeolocationState {
      * @returns {GeolocationState} The current geolocation state, including permission status, permission type, GPS, and network provider states.
      */
 
-    const [state, setState] = useState<GeolocationState>(GeolocationStateManager.getState());
+    const [state, setState] = useState<GeolocationState>(GeolocationStateManager.currentState);
 
     useEffect(() => {
 

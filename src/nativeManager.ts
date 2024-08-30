@@ -1,4 +1,4 @@
-import {NativeEventEmitter, type NativeModule, NativeModules, Platform} from "react-native";
+import {DeviceEventEmitter, NativeEventEmitter, type NativeModule, NativeModules, Platform} from "react-native";
 
 
 const LINKING_ERROR =
@@ -20,4 +20,6 @@ export const GeolocationStateModule = NativeModules.GeolocationState
     );
 
 
-export const eventEmitter = new NativeEventEmitter(GeolocationStateModule as NativeModule);
+export const eventEmitter = Platform.OS === "ios"
+    ? new NativeEventEmitter(NativeModules.RNEventEmitter as NativeModule)
+    : DeviceEventEmitter;

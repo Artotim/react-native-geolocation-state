@@ -7,8 +7,9 @@ export type GeolocationState = {
      * - "authorizedWhenInUse": The app is authorized to access location when in use.
      * - "authorizedAlways": The app is authorized to access location always.
      * - "notAuthorized": The app is not authorized to access location.
+     * - "denied": (iOS only) The app is not authorized to access location, or they are disabled in Settings.
      */
-    permission: "authorizedWhenInUse" | "authorizedAlways" | "notAuthorized";
+    permission: "authorizedWhenInUse" | "authorizedAlways" | "notAuthorized" | "denied";
 
     /**
      * Indicates the type of location permission granted.
@@ -29,9 +30,9 @@ export type GeolocationState = {
      * Represents the state of the network provider (Android only).
      * - "enabled": Network provider is enabled.
      * - "disabled": Network provider is disabled.
-     * - undefined: Network provider state is not available.
+     * - null: Network provider state is not available.
      */
-    networkProvider: "enabled" | "disabled" | undefined;
+    networkProvider: "enabled" | "disabled" | null;
 };
 
 /**
