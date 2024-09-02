@@ -4,7 +4,7 @@ import GeolocationStateManager from "./GeolocationStateManager";
 import {type GeolocationState} from "./index";
 
 
-export default function useGeolocationState(): GeolocationState {
+export default function useGeolocationStateHook(): GeolocationState {
     /**
      * A React hook that provides real-time updates on the device's geolocation state, ensuring the component
      * stays in sync with changes detected by the underlying geolocation manager.

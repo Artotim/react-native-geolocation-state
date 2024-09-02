@@ -42,7 +42,7 @@ export type GeolocationState = {
  *
  * @returns {GeolocationState} The current geolocation state.
  */
-export {default as useGeolocationState} from "./useGeolocationState";
+export {default as useGeolocationState} from "./useGeolocationStateHook";
 
 /**
  * Forces a refresh of the geolocation state.
